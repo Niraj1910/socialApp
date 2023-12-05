@@ -16,8 +16,6 @@ import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +28,6 @@ function App() {
 
   return (
     <Router>
-      <ToastContainer />
       {isAuthenticated && <Header />}
       <Routes>
         <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
