@@ -15,6 +15,16 @@ app.use(parser());
 // Enable CORS for all routes
 app.use(cors());
 
+// Set Content Security Policy headers dynamically
+app.use((req, res, next) => {
+  const backendUrl = `${req.protocol}://${req.get("host")}`;
+  res.setHeader(
+    "Content-Security-Policy",
+    `default-src 'self'; font-src 'self' ${backendUrl};`
+  );
+  return next();
+});
+
 // Importing Routes
 const post = require("./routes/post");
 const user = require("./routes/user");
